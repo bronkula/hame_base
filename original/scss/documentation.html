@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Responsive Dozenal Sass Grid</title>
+  </head>
+  <body>
+    <header class='header p-lg-vm'>
+      <hgroup class='container'>
+        <h1>Responsive Dozenal Sass Grid</h1>
+      </hgroup>
+    </header>
+    <!--
+      <div class='header m-xs-tl p-lg-vm'>
+        <div class='container'>
+          <h2>Table of Contents</h2>
+        </div>
+      </div>
+      <div class='container'>
+        <ul class='collapsed m-xs-tl'>
+          <li>
+            <a href='#codepen'>The Codepen Code</a>
+          </li>
+          <li>
+            <a href='#container'>The Container</a>
+          </li>
+          <li>
+            <a href='#breakpoints'>The Breakpoints</a>
+          </li>
+          <li>
+            <a href='#dozenal'>The Dozenal Grid</a>
+          </li>
+          <li>
+            <a href='#square'>The Responsive Square</a>
+          </li>
+          <li>
+            <a href='#mainside'>Main / Side Columns</a>
+          </li>
+          <li>
+            <a href='#utilities'>Utility Classes</a>
+          </li>
+          <li>
+            <a href='#closing'>Closing Thoughts</a>
+          </li>
+        </ul>
+      </div>
+    -->
+    <div>
+      <div class='header m-xs-tl p-lg-vm active' data-id='idcodepen' id='idcodepen'>
+        <div class='container'>
+          <h2>The Codepen Code</h2>
+        </div>
+      </div>
+      <div class='container'>
+        <p>Make sure you check the haml and sass from the codepen and then click the "View Compiled" buttons to see the html and css outputs from these two languages.</p>
+        <p>There is a lot to cover here, so go piece by piece, and ask any questions in the codepen comments.</p>
+      </div>
+      <div class='header m-xs-tl p-lg-vm' data-id='idcontainer' id='idcontainer'>
+        <div class='container'>
+          <h2>The Container</h2>
+        </div>
+      </div>
+      <div class='container'>
+        <p>The container is your first line of defense in a modern website for basic responsiveness. The container class is used to define a maximum width for your main site size. It should be put on a parent element around any section that should not go bigger than your chosen width.</p>
+        <p>Notice that the headings are all full width color, but then have a container inside of them. While the rest of the site is all within their own containers.</p>
+      </div>
+      <div class='header m-xs-tl p-lg-vm' data-id='idbreakpoints' id='idbreakpoints'>
+        <div class='container'>
+          <h2>The Breakpoints</h2>
+        </div>
+      </div>
+      <div class='container'>
+        <p>Throughout this library almost every class has a responsive prefix inside of it. There are five prefixes that each equal a css Media Query breakpoint.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>prefix</th>
+              <th>name</th>
+              <th>min-width</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>xs</td>
+              <td>extra-small</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>sm</td>
+              <td>small</td>
+              <td>320px</td>
+            </tr>
+            <tr>
+              <td>md</td>
+              <td>medium</td>
+              <td>600px</td>
+            </tr>
+            <tr>
+              <td>lg</td>
+              <td>large</td>
+              <td>960px</td>
+            </tr>
+            <tr>
+              <td>xl</td>
+              <td>extra-large</td>
+              <td>1200px</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Because minimum widths are used in this library, it means that all design patterns and decisions should be made as mobile first. Breakpoint values will retain from the smallest size they are set through any higher sizes that don't override those values. What does this mean?</p>
+        <p>You don't need to set class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12". You only need to set one value, at the smallest breakpoint, and it will carry over to the higher breakpoints. so class="col-xs-12" is sufficient to cover all breakpoints, whereas class="col-md-12" will have no value at xs and sm, but md lg and xl will all be covered. Likewise, you can skip breakpoints in the middle of relevant change breakpoints, so class="col-xs-12 col-lg-6" will have 12 for xs sm and md, and will have 6 for lg and xl.</p>
+      </div>
+      <div class='header m-xs-tl p-lg-vm' data-id='iddozenal' id='iddozenal'>
+        <div class='container'>
+          <h2>The Dozenal Grid</h2>
+        </div>
+      </div>
+      <div class='container'>
+        <p>This is a 12 column grid library that showcases haml, and sass code as well as many examples for how to understand and use a dozenal grid.</p>
+        <p>Dozenal comes from dozen, meaning 12. It means a base 12 number system. Like Decimal, which means base 10.</p>
+        <p>Here is a grid with only two columns. They are not responsive, and instead will always be two 50% columns at every browser size. The first time a designer meets a grid library it can be difficult to understand how to interperet the classes. XS in this case indicates "starting from the Extra Small Media Query" and 6 indicates "Covers 6 of the twelve columns available". So this would mean starting at xs size, this covers 50% of a 12 column grid.</p>
+        <p>Try changing the size of your browser to see the difference in any of these examples  (or rotate your device). And if you're on mobile, there should be little 1x 0.5x 0.25x buttons to allow you to see different sizes. This first example will have no difference. most of the others will.</p>
+        <div class='grid lined'>
+          <div class='row gutters'>
+            <div class='col-xs-6'>
+              <div class='well'>First</div>
+            </div>
+            <div class='col-xs-6'>
+              <div class='well'>Second</div>
+            </div>
+          </div>
+        </div>
+        <p>This next grid has 12 segments that have many Media Query breakpoints that allow very dynamic layout changes for different sizes of browser. Notice that they are written in order of the Media Query breakpoints so that they can be easily understood by a human, but the order of assignment is irrelevant.</p>
+        <p>Notice that each Media Query breakpoint is covered in this example, but this is totally unnecessary. This grid is mobile first, which means that if as long as you use a XS breakpoint, until another breakpoint issues a different value, all breakpoints will share the first's value. You can even see that the breakpoints don't follow a completely linear change in columns covered, since LG in this example covers a 4 columns (a third) and MD covers 3 columns (a fourth)</p>
+        <p>Notice also that if you intend to have many different elements sometimes on one line, sometimes on many lines, you don't need to, and probably shouldn't, put a row around each possible visible row. Elements will naturally flow to new visible rows when the space limitations demand it.</p>
+        <div class='grid lined'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>1</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>2</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>3</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>4</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>5</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>6</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>7</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>8</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>9</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>10</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>11</div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-4 col-xl-1'>
+              <div class='well'>12</div>
+            </div>
+          </div>
+        </div>
+        <p>Here is a grid without gutters. It is important to understand that a grid should always be used for structure and rarely altered for design. We use a simple well class to give a bit of differentiation between our columns. But these wells are placed inside of the columns, not attached to them.</p>
+        <div class='grid lined'>
+          <div class='row'>
+            <div class='col-xs-12 col-md-6 col-lg-2'>
+              <div class='well'>1</div>
+            </div>
+            <div class='col-xs-12 col-md-6 col-lg-2'>
+              <div class='well'>2</div>
+            </div>
+            <div class='col-xs-12 col-md-6 col-lg-2'>
+              <div class='well'>3</div>
+            </div>
+            <div class='col-xs-12 col-md-6 col-lg-2'>
+              <div class='well'>4</div>
+            </div>
+            <div class='col-xs-12 col-md-6 col-lg-2'>
+              <div class='well'>5</div>
+            </div>
+            <div class='col-xs-12 col-md-6 col-lg-2'>
+              <div class='well'>6</div>
+            </div>
+          </div>
+        </div>
+        <p>Here are some more examples. Just check the code. The column count for each breakpoint should always add up to 12.</p>
+        <div class='grid lined'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-sm-4 col-md-3 col-lg-5 col-xl-2'>
+              <div class='well'>1</div>
+            </div>
+            <div class='col-xs-12 col-sm-4 col-md-6 col-lg-2 col-xl-4'>
+              <div class='well'>2</div>
+            </div>
+            <div class='col-xs-12 col-sm-4 col-md-3 col-lg-5 col-xl-6'>
+              <div class='well'>3</div>
+            </div>
+          </div>
+        </div>
+        <p>Offsets are available in this library. Offsets allow you to push an element over on the left based on column sizes. Just remember to always have your numbers add up to 12, including both columns and offsets.</p>
+        <div class='grid m-xs-tm lined'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-md-6 col-lg-2'>
+              <div class='well'>1</div>
+            </div>
+            <div class='col-xs-12 col-md-6 col-lg-2 offset-lg-3'>
+              <div class='well'>2</div>
+            </div>
+            <div class='col-xs-12 col-lg-2 offset-lg-3'>
+              <div class='well'>3</div>
+            </div>
+          </div>
+        </div>
+        <p>Grids have a percentage of a parent's size, even if the parent is another column.</p>
+        <div class='grid m-xs-tm lined'>
+          <div class='row'>
+            <div class='col-xs-12 col-md-6'>
+              <div class='well'>
+                <div class='well'>1</div>
+                <div class='grid lined'>
+                  <div class='row gutters'>
+                    <div class='col-xs-12 col-md-6'>
+                      <div class='well'>1</div>
+                    </div>
+                    <div class='col-xs-12 col-md-6'>
+                      <div class='well'>2</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-md-6'>
+              <div class='well'>
+                <div class='well'>2</div>
+                <div class='grid lined'>
+                  <div class='row gutters'>
+                    <div class='col-xs-12 col-md-4'>
+                      <div class='well'>1</div>
+                    </div>
+                    <div class='col-xs-12 col-md-4'>
+                      <div class='well'>2</div>
+                    </div>
+                    <div class='col-xs-12 col-md-4'>
+                      <div class='well'>3</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='header m-xs-tl p-lg-vm' data-id='idsquare' id='idsquare'>
+        <div class='container'>
+          <h2>The Responsive Square</h2>
+        </div>
+      </div>
+      <div class='container'>
+        <p>This example shows a couple tricky tricks to do a couple tricky things.</p>
+        <ol>
+          <li>The first element inside the responsive column (.square-parent) is set to a responsive square.</li>
+          <li>The next element (.square-child) uses a simple css class to make a child fill it's parent and immediately give height to the weird non-height trick we just pulled. It also sets this element to position absolute, and a well for visual.</li>
+          <li>The final element (.centered-child) uses a css trick to make a child centered horizontally and vertically in a parent, as long as that parent has height. Notice the lorem text does not have specified height or width. Change the text, add breaks, it will still be centered.</li>
+        </ol>
+        <div class='grid m-xs-tm lined'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-sm-6 col-md-4 col-xl-2'>
+              <div class='square-parent'>
+                <div class='square-child well'>
+                  <div class='centered-child'>lorem</div>
+                </div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-4 col-xl-2'>
+              <div class='square-parent'>
+                <div class='square-child well'>
+                  <div class='centered-child'>lorem</div>
+                </div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-4 col-xl-2'>
+              <div class='square-parent'>
+                <div class='square-child well'>
+                  <div class='centered-child'>lorem</div>
+                </div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-4 col-xl-2'>
+              <div class='square-parent'>
+                <div class='square-child well'>
+                  <div class='centered-child'>lorem</div>
+                </div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-4 col-xl-2'>
+              <div class='square-parent'>
+                <div class='square-child well'>
+                  <div class='centered-child'>lorem</div>
+                </div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-sm-6 col-md-4 col-xl-2'>
+              <div class='square-parent'>
+                <div class='square-child well'>
+                  <div class='centered-child'>lorem</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='header m-xs-tl p-lg-vm' data-id='idmainside' id='idmainside'>
+        <div class='container'>
+          <h2>Main / Side columns</h2>
+        </div>
+      </div>
+      <div class='container'>
+        <p>Here we have a series of main section / side section grids just for fun, but also for common website layout. The side columns have a fixed width of 200 pixels, while the main columns relatively take up the rest of the space available, using the css calc function. Since the calc function is css, and not sass, make sure you hash brace any sass variables into the calc function to flatten them.</p>
+        <div class='grid lined'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-md-side'>
+              <div class='well'>
+                <ul class='collapsed'>
+                  <li>Side Section</li>
+                  <li>Link 1</li>
+                  <li>Link 2</li>
+                  <li>Link 3</li>
+                </ul>
+              </div>
+            </div>
+            <div class='col-xs-12 col-md-main'>
+              <div class='well'>
+                <p class='m-xs-n'>This is a main section with one side section on the left.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>Maybe this one will give you a better idea how this all might actually work. Also there are two side columns in this one. Columns with different heights definitely work better when there is one background color (or none) instead of individual background colors.</p>
+        <div class='grid m-xs-tm well lined'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-md-side'>
+              <ul class='collapsed'>
+                <li>Side Section</li>
+                <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li>
+              </ul>
+            </div>
+            <div class='col-xs-12 col-md-main2'>
+              <p class='m-xs-n'>This is a main section with two side sections. Notice that the class has changed to .col-md-main2, instead of just .col-md-main.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consectetur sodales mollis. Vestibulum tincidunt, urna non blandit suscipit, lacus nunc laoreet massa, quis elementum ex ex sit amet lacus. Donec dui lorem, tempor id dictum a, mattis nec ipsum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In nec vestibulum felis, non aliquam leo. In eget nisi rhoncus, auctor elit in, interdum purus. Donec eros magna, pellentesque ut lorem sit amet, laoreet rutrum leo. Nullam ultrices dapibus felis.</p>
+              <p>Sed efficitur, dolor sit amet porttitor varius, mi quam vehicula nisi, eget accumsan libero lacus eu augue. Donec faucibus quis turpis ac pellentesque. Suspendisse dignissim porta arcu, ac consectetur nisl hendrerit et. In in dolor sollicitudin, posuere arcu sed, gravida dui. Aenean posuere odio sit amet magna semper sodales. Nam eu nunc porttitor, congue felis ac, porta orci. Pellentesque nisi nisi, egestas at ullamcorper bibendum, feugiat vitae nibh. Vestibulum convallis commodo orci quis euismod. Donec nisl nisi, ullamcorper vitae porttitor eget, volutpat eget ante.</p>
+            </div>
+            <div class='col-xs-12 col-md-side'>
+              <ul class='collapsed'>
+                <li>Side Section</li>
+                <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p>The outer grid here has gutters, but the inner does not.</p>
+        <div class='grid m-xs-tm lined'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-md-main'>
+              <div class='well'>
+                <p class='m-xs-n'>
+                  This is a main section with one side section on the right. Grids can go inside of other grids, and each sub grid receives a percentage of the parent element.
+                </p>
+                <div class='grid m-xs-tm lined'>
+                  <div class='row'>
+                    <div class='col-xs-12 col-sm-6'>
+                      <div class='well'>content</div>
+                    </div>
+                    <div class='col-xs-12 col-sm-6'>
+                      <div class='well'>content</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-md-side'>
+              <div class='well'>
+                <ul class='collapsed'>
+                  <li>Side Section</li>
+                  <li>Link 1</li>
+                  <li>Link 2</li>
+                  <li>Link 3</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='header m-xs-tl p-lg-vm' data-id='idutilities' id='idutilities'>
+        <div class='container'>
+          <h2>Utility Classes</h2>
+        </div>
+      </div>
+      <div class='container'>
+        <p>Get ready for examples galore of all the utility classes that this library has available. Also notice that you can easily add your own. These classes are great for starting a project, but should definitely be streamlined into custom classes later. All of these classes are potentially responsive.</p>
+        <p>The key to understanding the utility classes is seeing the patterns, and then understanding that they all work the exact same way.</p>
+        <h3>Box Model</h3>
+        <p>Both padding and margin use the same values. A direction, followed by a size.</p>
+        <h4>Direction</h4>
+        <ul>
+          <li>t: top</li>
+          <li>r: right</li>
+          <li>b: bottom</li>
+          <li>l: left</li>
+          <li>v: vertical</li>
+          <li>h: horizontal</li>
+        </ul>
+        <h4>Size</h4>
+        <ul>
+          <li>l: 20px</li>
+          <li>m: 10px</li>
+          <li>s: 5px</li>
+          <li>n: 0 (this one is mostly for responsive removal)</li>
+        </ul>
+        <h4>Padding (with large distance)</h4>
+        <div class='lined display-ib'>
+          <div class='swell p-xs-tl'>.p-xs-tl</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell p-xs-rl'>.p-xs-rl</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell p-xs-bl'>.p-xs-bl</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell p-xs-ll'>.p-xs-ll</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell p-xs-vl'>.p-xs-vl</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell p-xs-hl'>.p-xs-hl</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell p-xs-l'>.p-xs-l</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell p-xs-n'>.p-xs-n</div>
+        </div>
+        <h4>Margin (with medium distance)</h4>
+        <div class='lined display-ib'>
+          <div class='swell m-xs-tm'>.m-xs-tm</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell m-xs-rm'>.m-xs-rm</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell m-xs-bm'>.m-xs-bm</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell m-xs-lm'>.m-xs-lm</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell m-xs-vm'>.m-xs-vm</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell m-xs-hm'>.m-xs-hm</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell m-xs-m'>.m-xs-m</div>
+        </div>
+        <div class='lined display-ib'>
+          <div class='swell m-xs-n'>.m-xs-n</div>
+        </div>
+        <h3>Alignment</h3>
+        <p>I decided to use the same class prefix for vertical and horizontal alignment.</p>
+        <h4>Horizontal</h4>
+        <ul>
+          <li>l: Left</li>
+          <li>c: Center</li>
+          <li>r: Right</li>
+          <li>j: Justify</li>
+        </ul>
+        <div class='grid'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-md-3'>
+              <strong>.align-xs-l</strong>
+              <div class='align-xs-l'>Sed efficitur, dolor sit amet porttitor varius, mi quam vehicula nisi, eget accumsan libero lacus eu augue. Donec faucibus quis turpis ac pellentesque. Suspendisse dignissim porta arcu, ac consectetur nisl hendrerit et. In in dolor sollicitudin, posuere arcu sed, gravida dui. Aenean posuere odio sit amet magna semper sodales. Nam eu nunc porttitor, congue felis ac, porta orci.</div>
+            </div>
+            <div class='col-xs-12 col-md-3'>
+              <strong>.align-xs-r</strong>
+              <div class='align-xs-r'>Sed efficitur, dolor sit amet porttitor varius, mi quam vehicula nisi, eget accumsan libero lacus eu augue. Donec faucibus quis turpis ac pellentesque. Suspendisse dignissim porta arcu, ac consectetur nisl hendrerit et. In in dolor sollicitudin, posuere arcu sed, gravida dui. Aenean posuere odio sit amet magna semper sodales. Nam eu nunc porttitor, congue felis ac, porta orci.</div>
+            </div>
+            <div class='col-xs-12 col-md-3'>
+              <strong>.align-xs-c</strong>
+              <div class='align-xs-c'>Sed efficitur, dolor sit amet porttitor varius, mi quam vehicula nisi, eget accumsan libero lacus eu augue. Donec faucibus quis turpis ac pellentesque. Suspendisse dignissim porta arcu, ac consectetur nisl hendrerit et. In in dolor sollicitudin, posuere arcu sed, gravida dui. Aenean posuere odio sit amet magna semper sodales. Nam eu nunc porttitor, congue felis ac, porta orci.</div>
+            </div>
+            <div class='col-xs-12 col-md-3'>
+              <strong>.align-xs-j</strong>
+              <div class='align-xs-j'>Sed efficitur, dolor sit amet porttitor varius, mi quam vehicula nisi, eget accumsan libero lacus eu augue. Donec faucibus quis turpis ac pellentesque. Suspendisse dignissim porta arcu, ac consectetur nisl hendrerit et. In in dolor sollicitudin, posuere arcu sed, gravida dui. Aenean posuere odio sit amet magna semper sodales. Nam eu nunc porttitor, congue felis ac, porta orci.</div>
+            </div>
+          </div>
+        </div>
+        <h4>Vertical</h4>
+        <ul>
+          <li>t: Top</li>
+          <li>m: Middle</li>
+          <li>b: Bottom</li>
+          <li>bl: Baseline</li>
+        </ul>
+        <div class='grid'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-md-3'>
+              <strong>.align-xs-t</strong>
+              <div class='m-xs-tm'>
+                <div class='display-xs-ib lined align-xs-t'>&</div>
+                <div class='display-xs-ib well align-xs-t'>&<br>&</div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-md-3'>
+              <strong>.align-xs-m</strong>
+              <div class='m-xs-tm'>
+                <div class='display-xs-ib lined align-xs-m'>&</div>
+                <div class='display-xs-ib well align-xs-m'>&<br>&</div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-md-3'>
+              <strong>.align-xs-b</strong>
+              <div class='m-xs-tm'>
+                <div class='display-xs-ib lined align-xs-b'>&</div>
+                <div class='display-xs-ib well align-xs-b'>&<br>&</div>
+              </div>
+            </div>
+            <div class='col-xs-12 col-md-3'>
+              <strong>.align-xs-bl</strong>
+              <div class='m-xs-tm'>
+                <div class='display-xs-ib lined align-xs-bl'>&</div>
+                <div class='display-xs-ib well align-xs-bl'>&<br>&</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4>Pull Floats</h4>
+        <ul>
+          <li>left</li>
+          <li>right</li>
+          <li>none</li>
+          <li>clear (clears both)</li>
+          <li>center (this just makes left and right margins auto, and will only work on a block element that has a defined width)</li>
+        </ul>
+        <div class='grid'>
+          <div class='row gutters'>
+            <div class='col-xs-12 col-md-3'>
+              <div class='align-xs-j'>
+                <strong class='pull-xs-left well'>.pull-xs-left</strong>
+                Sed efficitur, dolor sit amet porttitor varius, mi quam vehicula nisi, eget accumsan libero lacus eu augue. Donec faucibus quis turpis ac pellentesque. Suspendisse dignissim porta arcu, ac consectetur nisl hendrerit et. In in dolor sollicitudin, posuere arcu sed, gravida dui. Aenean posuere odio sit amet magna semper sodales. Nam eu nunc porttitor, congue felis ac, porta orci.
+              </div>
+            </div>
+            <div class='col-xs-12 col-md-3'>
+              <div class='align-xs-j'>
+                <strong class='pull-xs-right well'>.pull-xs-right</strong>
+                Sed efficitur, dolor sit amet porttitor varius, mi quam vehicula nisi, eget accumsan libero lacus eu augue. Donec faucibus quis turpis ac pellentesque. Suspendisse dignissim porta arcu, ac consectetur nisl hendrerit et. In in dolor sollicitudin, posuere arcu sed, gravida dui. Aenean posuere odio sit amet magna semper sodales. Nam eu nunc porttitor, congue felis ac, porta orci.
+              </div>
+            </div>
+            <div class='col-xs-12 col-md-3'>
+              <div class='align-xs-j'>
+                <strong class='pull-xs-none well'>.pull-xs-none</strong>
+                Sed efficitur, dolor sit amet porttitor varius, mi quam vehicula nisi, eget accumsan libero lacus eu augue. Donec faucibus quis turpis ac pellentesque. Suspendisse dignissim porta arcu, ac consectetur nisl hendrerit et. In in dolor sollicitudin, posuere arcu sed, gravida dui. Aenean posuere odio sit amet magna semper sodales. Nam eu nunc porttitor, congue felis ac, porta orci.
+              </div>
+            </div>
+            <div class='col-xs-12 col-md-3'>
+              <div class='align-xs-j'>
+                <strong class='pull-xs-left well'>.pull-xs-left</strong>
+                <strong class='pull-xs-left pull-xs-clear well'>.pull-xs-clear</strong>
+                Sed efficitur, dolor sit amet porttitor varius, mi quam vehicula nisi, eget accumsan libero lacus eu augue. Donec faucibus quis turpis ac pellentesque. Suspendisse dignissim porta arcu, ac consectetur nisl hendrerit et. In in dolor sollicitudin, posuere arcu sed, gravida dui. Aenean posuere odio sit amet magna semper sodales. Nam eu nunc porttitor, congue felis ac, porta orci.
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4>Display</h4>
+        <p>eg. .display-xs-ib</p>
+        <ul>
+          <li>b: block</li>
+          <li>ib: inline-block</li>
+          <li>n: none</li>
+        </ul>
+        <h4>Position</h4>
+        <p>eg. .position-xs-a</p>
+        <ul>
+          <li>s: static</li>
+          <li>r: relative</li>
+          <li>a: absolute</li>
+          <li>f: fixed</li>
+        </ul>
+      </div>
+      <div class='header m-xs-tl p-lg-vm' data-id='idclosing' id='idclosing'>
+        <div class='container'>
+          <h2>Closing Thoughts</h2>
+        </div>
+      </div>
+      <div class='container'>
+        <ul>
+          <li>A grid library should be used for layout. Design and content should always be placed inside columns, columns in rows, and (in this case) rows in grids.</li>
+          <li>A row with only one element in it that is only col-xs-12 is not a row or a column. That's just a div. Don't use rows and grids where they are not needed.</li>
+          <li>For the most part, grids can get gross and confusing. Feel free to simplify things in your html and css later, after you've gotten your design into a place that feels good. Grids are great for starting a project, but they can be intimidating to alter in the future.</li>
+          <li>You can't switch the order of your columns with a simple grid library. You will have to do some much more custom code, and will probably end up using flex-box in order to get the job done.</li>
+          <li>Learning how to use a css library is a great idea. Learning why things are done in css is a better idea. You know... actually learning css. It's hard. It's weird. But it's worth it.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
